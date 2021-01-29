@@ -80,7 +80,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="subTotal-price">$00</p>
                     </div>
                 </div>
 
@@ -153,7 +153,8 @@
                 }
                 document.getElementById('firstClass-count').value = firstClassNewCount;
 
-                var firstClassTotal = firstClassNewCount * 150;
+              //  var firstClassTotal = firstClassNewCount * 150;
+              calculateTotal();
             }
 
             document.getElementById('economyClass-increase').addEventListener('click', function () {
@@ -177,7 +178,19 @@
                 }
                 document.getElementById('economyClass-count').value = economyClassNewCount;
 
-                var economyClassTotal = economyClassNewCount * 150;
+               // const economyClassTotal = economyClassNewCount * 100;
+               calculateTotal();
+            }
+
+            function calculateTotal(){
+                const firstClassInput = document.getElementById('firstClass-count');
+                const firstClassCount = parseInt(firstClassInput.value);
+                
+                const economyClassInput = document.getElementById('economyClass-count');
+                const economyClassCount = parseInt(economyClassInput.value);
+
+                const subTotal = firstClassCount * 150 + economyClassCount * 100;
+                document.getElementById('subTotal-price').innerText = '$' + subTotal;
             }
         </script>
 
