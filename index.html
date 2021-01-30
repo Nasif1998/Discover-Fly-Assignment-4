@@ -151,53 +151,77 @@
             // })
 
             document.getElementById('firstClass-increase').addEventListener('click', function () {
-                handleFirstClassTotal(true);
+                handleClassTotal('firstClass', true);
             })
 
             document.getElementById('firstClass-decrease').addEventListener('click', function () {
-                handleFirstClassTotal(false);
+                handleClassTotal('firstClass', false);
             })
 
-            function handleFirstClassTotal(isIncrease) {
-                const firstClassInput = document.getElementById('firstClass-count');
-                const firstClassCount = parseInt(firstClassInput.value);
-                // const firstClassNewCount = firstClassCount - 1;
-                let firstClassNewCount = firstClassCount;
-                if(isIncrease == true){
-                    firstClassNewCount = firstClassCount + 1;
-                }
-                if(isIncrease == false && firstClassCount > 0){
-                    firstClassNewCount = firstClassCount - 1;
-                }
-                document.getElementById('firstClass-count').value = firstClassNewCount;
+            // function handleFirstClassTotal(isIncrease) {
+            //     const firstClassInput = document.getElementById('firstClass-count');
+            //     const firstClassCount = parseInt(firstClassInput.value);
+            //     // const firstClassNewCount = firstClassCount - 1;
+            //     let firstClassNewCount = firstClassCount;
+            //     if(isIncrease == true){
+            //         firstClassNewCount = firstClassCount + 1;
+            //     }
+            //     if(isIncrease == false && firstClassCount > 0){
+            //         firstClassNewCount = firstClassCount - 1;
+            //     }
+            //     document.getElementById('firstClass-count').value = firstClassNewCount;
 
-              //  var firstClassTotal = firstClassNewCount * 150;
-              calculateTotal();
-            }
+            //   //  var firstClassTotal = firstClassNewCount * 150;
+            //   calculateTotal();
+            // }
 
             document.getElementById('economyClass-increase').addEventListener('click', function () {
-                handleEconomyClassTotal(true);
+                handleClassTotal('economyClass',true);
             })
 
             document.getElementById('economyClass-decrease').addEventListener('click', function () {
-                handleEconomyClassTotal(false);
+                handleClassTotal('economyClass', false);
             })
 
-            function handleEconomyClassTotal(isIncrease) {
-                const economyClassInput = document.getElementById('economyClass-count');
-                const economyClassCount = parseInt(economyClassInput.value);
-                // const firstClassNewCount = firstClassCount - 1;
-                let economyClassNewCount = economyClassCount;
-                if(isIncrease == true){
-                    economyClassNewCount = economyClassCount + 1;
-                }
-                if(isIncrease == false && economyClassCount > 0){
-                    economyClassNewCount = economyClassCount - 1;
-                }
-                document.getElementById('economyClass-count').value = economyClassNewCount;
+            // function handleEconomyClassTotal(isIncrease) {
+            //     const economyClassInput = document.getElementById('economyClass-count');
+            //     const economyClassCount = parseInt(economyClassInput.value);
+            //     // const firstClassNewCount = firstClassCount - 1;
+            //     let economyClassNewCount = economyClassCount;
+            //     if(isIncrease == true){
+            //         economyClassNewCount = economyClassCount + 1;
+            //     }
+            //     if(isIncrease == false && economyClassCount > 0){
+            //         economyClassNewCount = economyClassCount - 1;
+            //     }
+            //     document.getElementById('economyClass-count').value = economyClassNewCount;
 
-               // const economyClassTotal = economyClassNewCount * 100;
-               calculateTotal();
+            //    // const economyClassTotal = economyClassNewCount * 100;
+            //    calculateTotal();
+            // }
+
+            function handleClassTotal(seatType, isIncrease) {
+                const seatTypeInput = document.getElementById(seatType +'-count');
+                const seatTypeCount = parseInt(seatTypeInput.value);
+                // const firstClassNewCount = firstClassCount - 1;
+                let seatTypeNewCount = seatTypeCount;
+                if(isIncrease == true){
+                    seatTypeNewCount = seatTypeCount + 1;
+                }
+                if(isIncrease == false && seatTypeCount > 0){
+                    seatTypeNewCount = seatTypeCount - 1;
+                }
+                document.getElementById(seatType + '-count').value = seatTypeNewCount;
+
+                if(seatType == 'firstClass'){
+                    seatTypeTotal = seatTypeNewCount * 150;
+                }
+                if(seatType == 'economyClass'){
+                    seatTypeTotal = seatTypeNewCount * 100;
+                }
+
+              //  var firstClassTotal = firstClassNewCount * 150;
+              calculateTotal();
             }
 
             function calculateTotal(){
