@@ -47,7 +47,7 @@
                         <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
-                    <label for="">Return</label>
+                    <label style="margin-bottom: 0%;" for="">Return</label>
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
@@ -89,7 +89,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="tax-amount">$00</p>
                     </div>
                 </div>
                 <hr>
@@ -98,11 +98,11 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="total">$00</p>
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -111,6 +111,24 @@
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
+
+        <div id="confirmation" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Awesome!!!!!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Your booking has been confirmed.</p>
+                </div>
+                <div class="modal-footer">
+                  <button id="vanish-modal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <script>
@@ -191,7 +209,23 @@
 
                 const subTotal = firstClassCount * 150 + economyClassCount * 100;
                 document.getElementById('subTotal-price').innerText = '$' + subTotal;
+
+                const taxAmount = Math.round(subTotal * .1);
+                document.getElementById('tax-amount').innerText = '$' + taxAmount;
+
+                const total = subTotal + taxAmount;
+                document.getElementById('total').innerText = total;
             }
+
+            document.getElementById('book').addEventListener('click', function(){
+                const confirmation = document.getElementById('confirmation');
+                confirmation.style.display = 'block';
+            })
+
+            document.getElementById('vanish-modal').addEventListener('click', function(){
+                const vanishModal = document.getElementById('confirmation');
+                vanishModal.style.display = 'none';
+            })
         </script>
 
         <!--Thank You-->
